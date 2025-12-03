@@ -1,17 +1,13 @@
-# This is a basic workflow to help you get started with the CI/CD for Functions Project
-
 name: Build and Deploy Job
 
 on:
-  push:
-    branches: ["main"]
   pull_request:
-    branches: ["main"]
-  workflow_dispatch:
+    branches: [develop]
+    types: [closed]
 
 env:
-  AZURE_FUNCTIONAPP_NAME: 'itfunctions-app'   # UPDATE THIS!
-  PYTHON_VERSION: '3.12'                               # Update if you used 3.11
+  AZURE_FUNCTIONAPP_NAME: 'itfunctions-app' # e.g. number-analyzer-steve
+  PYTHON_VERSION: '3.12'
 
 jobs:
   build-and-deploy:
@@ -34,11 +30,9 @@ jobs:
       - name: 'Run Azure Functions Action'
         uses: Azure/functions-action@v1
         with:
-          # Description: Name of the Azure Function App
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          # Description: Path to package or folder. *.zip or a folder to deploy
           package: .
-          # Description: Publish profile (*.publishsettings) file contents with web deploy secrets
-          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
+          # UPDATED: Using STAGING profile
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_STAGING_PUBLISH_PROFILE }}
           scm-do-build-during-deployment: true
           enable-oryx-build: true
