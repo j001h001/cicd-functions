@@ -14,4 +14,5 @@ jobs:
 
       - name: 'Swap the Azure Function'
         run: |
-          az functionapp deployment slot swap -g <RESOURCE_GROUP> -n <FUNCTION_APP_NAME> --slot staging --target-slot production
+          az functionapp deployment slot swap -g pythonU5 -n itfunctions-app --slot staging --target-slot production
+
