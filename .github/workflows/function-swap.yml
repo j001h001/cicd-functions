@@ -1,0 +1,17 @@
+name: Swap Function Slots
+
+on:
+  pull_request:
+    branches: [main]
+    types: [closed]
+
+jobs:
+  swap-function:
+    if: ${{ github.head_ref == 'develop' }}
+    runs-on: self-hosted  # Runs on your VM
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 'Swap the Azure Function'
+        run: |
+          az functionapp deployment slot swap -g pythonU5 -n itfunctions-app --slot staging --target-slot production

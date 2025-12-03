@@ -1,3 +1,7 @@
  {
-    "task1_function_endpoint": "https://itfunctions-app-exgrh6f9gqf3afe2.eastus-01.azurewebsites.net/api/http_trigger",
+    "github_username": "j001h001",
+    "repository": "cicd-functions",
+    "token": "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",
+    "function_app_name": "itfunctions-app",
+    "task2_function_endpoint": "https://itfunctions-app-exgrh6f9gqf3afe2.eastus-01.azurewebsites.net/api/http_trigger",
 }
